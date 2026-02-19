@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import QuizList from "./pages/QuizList";
 import QuizCreate from "./pages/QuizCreate";
 import QuizAttempt from "./pages/QuizAttempt";
