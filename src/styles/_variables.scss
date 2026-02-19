@@ -1,4 +1,4 @@
-// Colors
+// colors
 $primary-color: #6c5ce7;
 $secondary-color: #a29bfe;
 $background-color: #f7f9fa;
@@ -8,7 +8,7 @@ $error-color: #d63031;
 $white: #ffffff;
 $dark: #2d3436;
 
-// Fonts
+// fonts
 $font-stack:
   "Inter",
   system-ui,
@@ -16,14 +16,14 @@ $font-stack:
   sans-serif;
 $font-heading: "Outfit", sans-serif;
 
-// Spacing
+// spacing
 $spacing-xs: 4px;
 $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
 $spacing-xl: 32px;
 
-// Shadows
+// shadows
 $shadow-sm:
   0 4px 6px -1px rgba(0, 0, 0, 0.1),
   0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -31,7 +31,7 @@ $shadow-md:
   0 10px 15px -3px rgba(0, 0, 0, 0.1),
   0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
-// Breakpoints
+// breakpoints
 $breakpoint-mobile: 480px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
