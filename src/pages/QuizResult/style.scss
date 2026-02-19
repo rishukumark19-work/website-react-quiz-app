@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
@@ -9,7 +10,7 @@
   background: linear-gradient(
     135deg,
     $background-color 0%,
-    darken($background-color, 5%) 100%
+    color.adjust($background-color, $lightness: -5%) 100%
   );
   gap: $spacing-xl;
 
@@ -244,23 +245,23 @@
           &.user-correct {
             background: rgba($success-color, 0.1);
             border-color: rgba($success-color, 0.3);
-            color: darken($success-color, 15%);
+            color: color.adjust($success-color, $lightness: -15%);
           }
 
           &.user-wrong {
             background: rgba($error-color, 0.1);
             border-color: rgba($error-color, 0.3);
-            color: darken($error-color, 15%);
+            color: color.adjust($error-color, $lightness: -15%);
           }
 
           &.missed {
             background: rgba($success-color, 0.05);
             border: 1px dashed rgba($success-color, 0.4);
-            color: darken($success-color, 10%);
+            color: color.adjust($success-color, $lightness: -10%);
           }
 
           &.neutral {
-            color: lighten($text-color, 10%);
+            color: color.adjust($text-color, $lightness: 10%);
           }
         }
       }
