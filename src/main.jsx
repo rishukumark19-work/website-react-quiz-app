@@ -6,7 +6,6 @@ import { QuizProvider } from "./context/QuizContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {console.log("App mounting...")}
     <QuizProvider>
       <App />
     </QuizProvider>
