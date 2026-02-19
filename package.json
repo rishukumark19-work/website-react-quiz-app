@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://rishukumark19-work.github.io/website-react-quiz-app/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

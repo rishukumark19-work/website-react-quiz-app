@@ -25,7 +25,11 @@ export const QuizProvider = ({ children }) => {
   // save data
   useEffect(() => {
     if (!loading) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(quizzes));
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(quizzes));
+      } catch (e) {
+        console.error("Storage error:", e);
+      }
     }
   }, [quizzes, loading]);
 
