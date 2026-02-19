@@ -1,0 +1,122 @@
+@use "sass:color";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.quiz-create-page {
+  padding: $spacing-xl;
+  max-width: 900px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: $spacing-xl;
+  }
+
+  .wizard-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: $spacing-xl * 2;
+    position: relative;
+
+    .line {
+      flex: 1;
+      height: 2px;
+      background: color.adjust($text-color, $lightness: 80%);
+      margin: 0 $spacing-md;
+      max-width: 200px;
+      z-index: 0;
+    }
+
+    .step {
+      background: $white;
+      border: 2px solid color.adjust($text-color, $lightness: 80%);
+      color: color.adjust($text-color, $lightness: 40%);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      z-index: 1;
+      transition: all 0.3s ease;
+
+      &.active {
+        border-color: $primary-color;
+        color: $primary-color;
+        background-color: color.adjust($primary-color, $lightness: 50%);
+      }
+    }
+  }
+
+  .wizard-content {
+    background: $white;
+    padding: $spacing-xl;
+    border-radius: 12px;
+    box-shadow: $shadow-md;
+    transition: all 0.3s ease;
+
+    &.step-2 {
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+
+      .actions-bar {
+        background: $white;
+        padding: $spacing-lg;
+        border-radius: 12px;
+        box-shadow: $shadow-sm;
+        margin-top: $spacing-lg;
+        border-top: none;
+      }
+
+      .empty-state {
+        background: $white;
+        border-style: solid;
+        box-shadow: $shadow-sm;
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: $spacing-xl;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: $spacing-xl;
+      border: 2px dashed color.adjust($text-color, $lightness: 80%);
+      border-radius: 8px;
+      color: color.adjust($text-color, $lightness: 40%);
+      margin-bottom: $spacing-lg;
+    }
+
+    .actions-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: $spacing-xl;
+      border-top: 1px solid color.adjust($text-color, $lightness: 90%);
+      padding-top: $spacing-lg;
+
+      .nav-buttons {
+        display: flex;
+        gap: $spacing-md;
+      }
+    }
+  }
+}

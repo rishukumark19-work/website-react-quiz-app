@@ -1,0 +1,205 @@
+@use "sass:color";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.quiz-attempt-page {
+  padding: $spacing-xl;
+  max-width: 800px;
+  margin: 0 auto;
+
+  &.timer-flash-container {
+    animation: background-pulse 1s infinite;
+    border: 2px solid $error-color;
+    border-radius: 16px;
+  }
+
+  .quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+
+    h2 {
+      margin: 0;
+      color: $primary-color;
+    }
+
+    .timer {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $text-color;
+      font-variant-numeric: tabular-nums;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: color.adjust($text-color, $lightness: 90%);
+
+      &.warning {
+        color: $error-color;
+        animation: pulse 1s infinite;
+      }
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes background-pulse {
+    0% {
+      background-color: transparent;
+    }
+    50% {
+      background-color: rgba($error-color, 0.1);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 6px;
+    background: color.adjust($text-color, $lightness: 90%);
+    border-radius: 3px;
+    margin-bottom: $spacing-xl;
+    overflow: hidden;
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, $primary-color, $secondary-color);
+      transition: width 0.3s ease-out;
+    }
+  }
+
+  .question-container {
+    background: $white;
+    padding: $spacing-xl;
+    border-radius: 12px;
+    box-shadow: $shadow-md;
+    margin-bottom: $spacing-xl;
+
+    .question-header {
+      margin-bottom: $spacing-xl;
+
+      .q-number {
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: color.adjust($text-color, $lightness: 40%);
+        display: block;
+        margin-bottom: $spacing-xs;
+      }
+
+      .q-text {
+        font-size: 1.5rem;
+        margin: 0 0 $spacing-xs 0;
+        color: $text-color;
+      }
+
+      .q-type {
+        font-size: 0.9rem;
+        font-style: italic;
+        color: color.adjust($text-color, $lightness: 40%);
+      }
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-md;
+
+      .option-item {
+        display: flex;
+        align-items: center;
+        padding: $spacing-md;
+        border: 2px solid color.adjust($text-color, $lightness: 90%);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: color.adjust($primary-color, $lightness: 45%);
+          border-color: color.adjust($primary-color, $lightness: 30%);
+        }
+
+        &.selected {
+          border-color: $primary-color;
+          background-color: color.adjust($primary-color, $lightness: 40%);
+        }
+
+        .opt-marker {
+          margin-right: $spacing-md;
+          display: flex;
+          align-items: center;
+
+          .radio,
+          .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid color.adjust($text-color, $lightness: 60%);
+            display: inline-block;
+            position: relative;
+
+            &.checked {
+              border-color: $primary-color;
+              background-color: $primary-color;
+
+              &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: $white;
+              }
+            }
+          }
+
+          .radio {
+            border-radius: 50%;
+            &.checked::after {
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+            }
+          }
+
+          .checkbox {
+            border-radius: 4px;
+            &.checked::after {
+              width: 10px;
+              height: 4px; // Checkmark shape approximate
+              border: 2px solid $white;
+              border-top: none;
+              border-right: none;
+              transform: translate(-50%, -60%) rotate(-45deg);
+              background: transparent;
+            }
+          }
+        }
+
+        .opt-text {
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .quiz-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

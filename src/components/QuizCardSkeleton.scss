@@ -1,0 +1,57 @@
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+.quiz-card-skeleton {
+  background: $white;
+  border-radius: 12px;
+  padding: $spacing-md;
+  box-shadow: $shadow-sm;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @keyframes shimmer {
+    0% {
+      background-color: #f0f0f0;
+    }
+    50% {
+      background-color: #e0e0e0;
+    }
+    100% {
+      background-color: #f0f0f0;
+    }
+  }
+
+  .skeleton-title,
+  .skeleton-desc,
+  .skeleton-meta,
+  .skeleton-action {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    animation: shimmer 1.5s infinite ease-in-out;
+  }
+
+  .skeleton-title {
+    height: 24px;
+    width: 60%;
+    margin-bottom: $spacing-sm;
+  }
+
+  .skeleton-desc {
+    height: 48px;
+    width: 100%;
+    margin-bottom: $spacing-md;
+  }
+
+  .skeleton-meta {
+    height: 16px;
+    width: 40%;
+  }
+
+  .skeleton-action {
+    height: 36px;
+    width: 100%;
+    margin-top: $spacing-md;
+  }
+}
