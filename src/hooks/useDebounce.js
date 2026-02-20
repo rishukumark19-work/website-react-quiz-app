@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useDebounce = (value, delay) => {
+  //debounce hook -for search
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
@@ -9,8 +10,7 @@ const useDebounce = (value, delay) => {
       setDebouncedValue(value);
     }, delay);
 
-    // Cleanup the timeout if the value changes (or component unmounts)
-    // before the delay has passed.
+    // cleanup the timeout if the value changes before the delay
     return () => {
       clearTimeout(handler);
     };

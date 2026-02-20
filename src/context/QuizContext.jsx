@@ -13,7 +13,7 @@ export const QuizProvider = ({ children }) => {
     const storedQuizzes = localStorage.getItem(STORAGE_KEY);
     if (storedQuizzes) {
       try {
-        setQuizzes(JSON.parse(storedQuizzes));
+        setQuizzes(JSON.parse(storedQuizzes)); //load locally
       } catch (error) {
         console.error("Failed to parse quizzes:", error);
         setQuizzes([]);
@@ -26,7 +26,7 @@ export const QuizProvider = ({ children }) => {
   useEffect(() => {
     if (!loading) {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(quizzes));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(quizzes)); //stored locally
       } catch (e) {
         console.error("Storage error:", e);
       }

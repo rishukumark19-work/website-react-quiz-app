@@ -15,7 +15,9 @@ const QuizList = () => {
   const [sortBy, setSortBy] = useState("date"); // 'date' or 'name'
 
   const filteredQuizzes = useMemo(() => {
+    //name date sorting
     let result = quizzes.filter(
+      //useMemo -sort by tile and date created
       (q) =>
         q.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
         q.description.toLowerCase().includes(debouncedSearchTerm.toLowerCase()),
@@ -62,7 +64,7 @@ const QuizList = () => {
 
       <div className="quiz-grid">
         {loading ? (
-          Array.from({ length: 6 }).map((_, i) => <QuizCardSkeleton key={i} />)
+          Array.from({ length: 6 }).map((_, i) => <QuizCardSkeleton key={i} />) //skeleton loading
         ) : filteredQuizzes.length > 0 ? (
           filteredQuizzes.map((quiz) => (
             <QuizCard

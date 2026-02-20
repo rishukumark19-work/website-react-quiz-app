@@ -12,6 +12,7 @@ const QuizResult = () => {
   const { quiz, answers, timeLeft, totalTime, autoSubmitted } = state;
 
   const results = useMemo(() => {
+    //score and percentage calculation
     // no data
     if (!quiz || !answers) {
       return {
@@ -132,10 +133,12 @@ const QuizResult = () => {
 
         <div className="actions">
           <Link to="/">
+            {" "}
+            //back to home
             <Button variant="outline">Back to Home</Button>
           </Link>
           <Link to={`/attempt/${id}`}>
-            <Button variant="primary">Retake Quiz</Button>
+            <Button variant="primary">Retake Quiz</Button> //retake quiz
           </Link>
         </div>
       </div>

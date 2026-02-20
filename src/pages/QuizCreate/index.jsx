@@ -9,7 +9,7 @@ import "./style.scss";
 const QuizCreate = () => {
   const navigate = useNavigate();
   const { addQuiz } = useQuizzes();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1); //multi-step-wizard
   const [errors, setErrors] = useState({});
 
   const [quizData, setQuizData] = useState({
@@ -32,6 +32,7 @@ const QuizCreate = () => {
   };
 
   const validateStep1 = () => {
+    //form validation
     const newErrors = {};
     if (!quizData.title.trim()) newErrors.title = "Title is required";
     if (!quizData.description.trim())
@@ -44,6 +45,7 @@ const QuizCreate = () => {
   };
 
   const validateStep2 = () => {
+    //form validation
     const newErrors = {};
     if (quizData.questions.length === 0) {
       newErrors.general = "Add at least one question";
@@ -78,10 +80,12 @@ const QuizCreate = () => {
   };
 
   const handleBack = () => {
+    //multi-step-wizard
     setStep(1);
   };
 
   const handleAddQuestion = () => {
+    //add-delete-update-question
     setQuizData((prev) => ({
       ...prev,
       questions: [
@@ -100,12 +104,14 @@ const QuizCreate = () => {
   };
 
   const handleQuestionChange = (index, updatedQuestion) => {
+    //add-delete-update-question
     const updatedQuestions = [...quizData.questions];
     updatedQuestions[index] = updatedQuestion;
     setQuizData((prev) => ({ ...prev, questions: updatedQuestions }));
   };
 
   const handleDeleteQuestion = (index) => {
+    //add-delete-update-question
     const updatedQuestions = quizData.questions.filter((_, i) => i !== index);
     setQuizData((prev) => ({ ...prev, questions: updatedQuestions }));
   };
@@ -128,6 +134,8 @@ const QuizCreate = () => {
       </div>
 
       <div className={`wizard-content step-${step}`}>
+        {" "}
+        //multi-step-wizard
         {step === 1 && (
           <div className="step-content fade-in">
             <Input
@@ -163,7 +171,6 @@ const QuizCreate = () => {
             </div>
           </div>
         )}
-
         {step === 2 && (
           <div className="step-content fade-in">
             {quizData.questions.length === 0 && (

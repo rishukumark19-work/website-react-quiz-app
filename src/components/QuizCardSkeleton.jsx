@@ -1,5 +1,5 @@
 import React from "react";
-import "./QuizCardSkeleton.scss";
+import "./QuizCardSkeleton.scss"; //skeleton for loading
 
 const QuizCardSkeleton = () => {
   return (

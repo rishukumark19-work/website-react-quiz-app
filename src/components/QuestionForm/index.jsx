@@ -24,6 +24,7 @@ const QuestionForm = ({ question, index, onChange, onDelete, errors = {} }) => {
   };
 
   const handleCorrectChange = (optionIndex) => {
+    //multiple choice question
     let updatedOptions;
     if (question.type === "single") {
       updatedOptions = question.options.map((opt, i) => ({

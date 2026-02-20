@@ -17,8 +17,9 @@ const useTimer = (initialMinutes, onTimeUp) => {
     setTimeLeft(initialMinutes * 60);
 
     const intervalId = setInterval(() => {
+      //countdown Timer logic
       setTimeLeft((prev) => {
-        // Build-in check: if we're at 1 second, next tick is 0, so stop.
+        // stops tick if 1 sec remaning
         if (prev <= 1) {
           clearInterval(intervalId);
           if (onTimeUpRef.current) {
