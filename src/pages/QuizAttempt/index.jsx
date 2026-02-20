@@ -30,6 +30,7 @@ const QuizAttempt = () => {
 
   // handle timeout
   const handleTimeUp = useCallback(() => {
+    //autosubmit on timer end
     if (!isSubmitted) {
       // navigate result
       navigate(`/result/${id}`, {
@@ -46,6 +47,7 @@ const QuizAttempt = () => {
 
   // timer hook
   const { timeLeft, formatTime } = useTimer(
+    //time reamaing
     quiz ? quiz.timeLimit : 0,
     handleTimeUp,
   );
@@ -102,7 +104,7 @@ const QuizAttempt = () => {
   const currentAnswers = answers[currentQuestionIndex] || [];
 
   // flash alert
-  const isWarning = timeLeft <= 10;
+  const isWarning = timeLeft <= 10; //warning red flash
 
   return (
     <div
